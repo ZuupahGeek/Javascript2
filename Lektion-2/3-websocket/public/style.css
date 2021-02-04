@@ -22,6 +22,8 @@ nav {
 #chat-window {
     width: 100%;
     height: 100%;
+    overflow-y: scroll;
+    
 }
 
 #name {
@@ -62,4 +64,10 @@ nav {
 
 .right {
     margin-left: auto;
+}
+
+
+#feedback {
+    margin-left: 1rem;
+    color: darkslategrey;
 }
