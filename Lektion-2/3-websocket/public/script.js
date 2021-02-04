@@ -6,6 +6,7 @@ const message = document.querySelector('#message');
 const btn = document.querySelector('#send');
 const chatForm = document.querySelector('#chat-form');
 const feedback = document.querySelector('#feedback');
+const chat = document.querySelector('#chat-window');
 
 // Emit event
 chatForm.addEventListener('submit', e => {
@@ -40,7 +41,11 @@ socket.on('message', data => {
     `
 
     feedback.innerHTML = '';
+
+    chat.scrollTop = chat.scrollHeight;
 })
+
+
 
 
 message.addEventListener('keypress', () => {
