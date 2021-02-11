@@ -16,7 +16,7 @@ exports.getOneProduct = (req, res) => {
 exports.createProduct = (req, res) => {
     Product.find({ name: req.body.name })
     .then(exists => {
-        if(exists > 0) {
+        if(exists.length > 0) {
             return res.status(400).json({
                 statusCode: 400,
                 status: false,
@@ -33,7 +33,83 @@ exports.createProduct = (req, res) => {
             image: req.body.image
         })
 
+        product.save()
+        .then(() => {
+            res.status(201).json({
+                statusCode: 201,
+                status: true,
+                message: 'Product was successfully created'
+            })
+        })
+        .catch(() => {
+            res.status(500).json({
+                statusCode: 500,
+                status: false,
+                message: 'Failed to create product'
+            })
+        })
+    })
+}
 
 
+exports.UpdateProduct = (req, res) => {
+    // Product.updateOne( { _id: req.params.id }, req.body )
+    // .then(() => {
+    //     Product.updateOne( { _id: req.params.id}, {
+    //         $set: { modified: Date.now() }
+    //      })
+    //      .then(() => {
+    //          res.status(200).json({
+    //              statusCode: 200,
+    //              status: true,
+    //              message: 'Product successfully updated'
+    //          })
+    //      })
+    // })
+    // .catch(() => {
+    //     res.status(500).json({
+    //         statusCode: 500,
+    //         status: false,
+    //         message: 'Failed to update product'
+    //     })
+    // })
+
+    Product.updateOne( { _id: res.params.id}, {
+        ...req.body,
+        modified: Date.now()
+    })
+    .then(() => {
+        res.status(201).json({
+            statusCode: 201,
+            status: true,
+            message: 'Product was successfully updated'
+        })
+    })
+
+    .catch(() => {
+        res.status(500).json({
+            statusCode: 500,
+            status: false,
+            message: 'Failed to update product'
+        })
+    })
+
+}
+
+exports.deleteProduct = (req, res) => {
+    Product.deleteOne( { _id: req.params.id})
+    .then(() => {
+        res.status(200).json({
+            statusCode: 201,
+            status: true,
+            message: 'Product was successfully removed'
+        })
+    })
+    .catch(() => {
+        res.status(500).json({
+            statusCode: 500,
+            status: false,
+            message: 'Failed to delete product'
+        })
     })
 }
