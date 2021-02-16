@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const port = 9999;
 
 const serverURI = 'http://localhost:' + port;
-const mongoURI = 'mongodb+srv://Joachim:TonyHawk1@lektion3.znsoi.mongodb.net/Todos?retryWrites=true&w=majority';
+const mongoURI = 'mongodb+srv://Joachim:<password>@lektion3.znsoi.mongodb.net/Todos?retryWrites=true&w=majority';
 
 
 
