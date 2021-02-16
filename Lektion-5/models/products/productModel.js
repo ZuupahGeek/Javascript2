@@ -117,28 +117,35 @@ exports.updateProduct = (req, res) => {
 }
 
 exports.deleteProduct = (req, res) => {
-  Product.exists({ _id: req.params.id }, (err, result) => {
-    if(err){
-      return res.status(500).json(err)
-    } else {
-      if(result){
-        Product.deleteOne({ _id: req.params.id })
-          .then(() => {
-            res.status(200).json({
-              statusCode: 200,
-              status: true,
-              message: 'Product deleted'
-            })
-          })
-        
-          .catch(() => {
-            res.status(500).json({
-            statusCode: 500,
-            status: false,
-            message: 'failed to delete product'
-          })
+ Product.exists( { _id: req.params.id }, (err, result) =>{
+
+  if(err) {
+    return res.status(500).json(err)
+  }   else  {
+    if(result){
+      Product.deleteOne( {_id: req.params.id} )
+      .then(() => {
+        res.status(200).json({
+          statusCode: 200,
+          status: true,
+          message: 'Product was successfully deleted'
+        })
+      })
+      .catch(() => {
+        res.status(500).json({
+          statusCode: 500,
+          status: false, 
+          message: 'Could not delete product'
+        })
+      })
+    }  
+    else {
+      return res.status(404).json({
+        statusCode: 404, 
+        status: false, 
+        message: 'This product does not exist'
       })
     }
-  })
-}
+  }
+ })
 }
