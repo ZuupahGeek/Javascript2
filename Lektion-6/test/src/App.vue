@@ -3,6 +3,8 @@
     
 <appNavbar />
 
+<hero />
+
 <appTestamonials />
 
 <appFooter />
@@ -13,7 +15,8 @@
 <script>
 import Navbar from './components/navigation/Navbar'
 import Footer from './components/navigation/Footer'
-import Testimonials from './components/Testamonials/Testamonials'
+import Testamonial from './components/Testamonials/Testamonials'
+import Hero from './components/Hero.vue'
 
 
   export default {
@@ -21,7 +24,8 @@ import Testimonials from './components/Testamonials/Testamonials'
     components: {
       appNavbar: Navbar,
       appFooter: Footer,
-      appTestamonials: Testimonials
+      appTestamonials: Testamonial,
+        Hero
         
     }
   }
