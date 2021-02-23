@@ -4,6 +4,7 @@
     <div class="container">
       <example-1 />
       <example-2 class="mt-1"/>
+      <example-3 class="mt-1"/>
     </div>
   </div>
 </template>
@@ -12,6 +13,7 @@
 <script>
 import Example1 from './components/Example1.vue'
 import Example2 from './components/Example2.vue'
+import Example3 from './components/Example3.vue'
 import Navbar from './components/Navbar'
 
 export default {
@@ -20,6 +22,7 @@ export default {
     Navbar,
     Example1,
     Example2,
+    Example3,
   }
 }
 </script>
@@ -41,7 +44,7 @@ export default {
 .red {
   color: red;
 }
-mt-1 {
+.mt-1 {
   margin-top: 2rem;
 }
 .btn {
