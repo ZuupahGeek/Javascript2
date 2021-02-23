@@ -5,6 +5,9 @@
     <p> Numret är {{ number }} </p>
     <p>A = {{ a }}</p>
     <p>B = {{ b }}</p>
+    <br>
+    <p>Nummer + A = {{ addToA }}</p>
+    <p>Nummer + B = {{ addToB }}</p>
   </div>
 </template>
 
@@ -15,6 +18,14 @@ data() {
     number: 30,
     a: 0,
     b: 0
+  }
+},
+computed: {
+  addToA: function() {
+    return this.number + this.a
+  },
+addToB: function() {
+    return this.number + this.b
   }
 }
 }
