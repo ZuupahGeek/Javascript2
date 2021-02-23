@@ -8,6 +8,8 @@
       <h1 v-else>Trevligt att träffas, {{ name }}</h1>
 
       <app-form />
+
+      <todos :todos="todos"/>
     </div>
   </div>
 </template>
@@ -15,19 +17,26 @@
 <script>
 import AppForm from './components/AppForm.vue'
 import Navbar from './components/Navbar.vue'
+import Todos from './components/todos.vue'
 
 export default {
   name: 'App',
   components: {
     Navbar,
     AppForm,
+    Todos,
    
     
   },
   data() {
     return {
       name: 'Joachim',
-      active: true
+      active: true,
+      todos: [
+        {id: 1, title: 'todo1'},
+        {id: 2, title: 'todo2'},
+        {id: 3, title: 'todo3'}
+      ]
     }
   }
 }
