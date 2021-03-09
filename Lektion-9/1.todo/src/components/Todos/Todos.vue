@@ -1,9 +1,9 @@
 <template>
   <div>
     <transition-group name="fade-slide">
-      <div v-for="todo in todos" :key="todo._id">
-        <Todo v-if="value === ''" :todo="todo" @delete-todo="$emit('delete-todo', todo._id)" />
-        <Todo v-else-if="todo.completed === value" :todo="todo" @delete-todo="$emit('delete-todo', todo._id)" />
+      <div v-for="todo in todos" :key="todo.id">
+        <Todo v-if="value === ''" :todo="todo" @delete-todo="$emit('delete-todo', todo.id)" />
+        <Todo v-else-if="todo.completed === value" :todo="todo" @delete-todo="$emit('delete-todo', todo.id)" />
       </div>
     </transition-group>
   </div>

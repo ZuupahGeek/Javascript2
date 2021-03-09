@@ -25,23 +25,24 @@ export default {
   },
   data() {
     return {
-      todos: [
-        { _id: '1', title: 'todo item one', completed: false },
-        { _id: '2', title: 'todo item two', completed: false },
-        { _id: '3', title: 'todo item three', completed: false },
-        { _id: '4', title: 'todo item four', completed: false },
-        { _id: '5', title: 'todo item five', completed: true },
-      ],
+      // todos: [
+      //   { id: '1', title: 'todo item one', completed: false },
+      //   { id: '2', title: 'todo item two', completed: false },
+      //   { id: '3', title: 'todo item three', completed: false },
+      //   { id: '4', title: 'todo item four', completed: false },
+      //   { id: '5', title: 'todo item five', completed: true },
+      // ],
+      todos: [],
       sort: ''
     }
   },
     methods: {
       deleteTodo(id) {
-        this.todos = this.todos.filter(todo => todo._id !== id)
+        this.todos = this.todos.filter(todo => todo.id !== id)
       },
       add(title) {
         let todo = {
-          _id: uuidv4(),
+          id: uuidv4(),
           title,
           completed: false
         }
@@ -58,7 +59,17 @@ export default {
           default:
             this.sort = '' 
         }
+      },
+      fetchTodos() {
+        fetch('http://localhost:3000/todos')
+        .then(res => res.json())
+        .then(data => {
+          this.todos = data
+        })
       }
+    },
+    created() {
+      this.fetchTodos()
     }
 }
 </script>
