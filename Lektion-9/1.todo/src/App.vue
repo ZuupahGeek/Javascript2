@@ -43,8 +43,8 @@ export default {
           method: 'DELETE'
         })
         .then(res => {
-         if(res === 200) {
-           this.fetchTodos();
+         if(res.status === 200) {
+           this.fetchTodos()
          }
         })
       },

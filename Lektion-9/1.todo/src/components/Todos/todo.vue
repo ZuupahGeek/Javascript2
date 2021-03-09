@@ -1,9 +1,9 @@
 <template>
   <div class="px-3 border bg-white mt-1 relative">
    <div class="d-flex justify-content-between align-items-center ">
-        <p class="p-3" :class="{ done: todo.completed }" @click="todo.completed = !todo.completed">{{ todo.title }}</p>
+        <p class="p-3" :class="{ done: todo.completed }" @click="toggleCompleted">{{ todo.title }}</p>
         <button class="btn btn-danger px-3" @click="deleteTodo">X</button>
-        <small class="text-danger">{{ error }}</small>
+        <!-- <small class="text-danger">{{ error }}</small> -->
       </div>
       <modal v-if="error" @close="error=false"/>
  </div>     
