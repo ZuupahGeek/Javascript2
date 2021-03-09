@@ -3,7 +3,7 @@
     <Header title="TODOS by Jojje"/>
     <add-todo @addTodo="add" @sort="sortTodos"/>
     <div class="container py-5">
-      <todos :value="sort" :todos="todos" @delete-todo="deleteTodo"/>
+      <todos :value="sort" :todos="todos" @delete-todo="deleteTodo" @toggle="fetchTodos"/>
     </div>
     
   </div>
@@ -14,7 +14,7 @@
   import AddTodo from './components/AddTodo'
   import Todos from './components/Todos/Todos.vue'
 
-  import { v4 as uuidv4 } from 'uuid';
+  // import { v4 as uuidv4 } from 'uuid';
 
 export default {
   name: 'App',
@@ -38,15 +38,38 @@ export default {
   },
     methods: {
       deleteTodo(id) {
-        this.todos = this.todos.filter(todo => todo.id !== id)
+        // this.todos = this.todos.filter(todo => todo.id !== id)
+        fetch(`http://localhost:3000/todos/${id}`, {
+          method: 'DELETE'
+        })
+        .then(res => {
+         if(res === 200) {
+           this.fetchTodos();
+         }
+        })
       },
       add(title) {
-        let todo = {
-          id: uuidv4(),
-          title,
-          completed: false
-        }
-        this.todos.push(todo);
+        // let todo = {
+        //   id: uuidv4(),
+        //   title,
+        //   completed: false
+        // }
+        // this.todos.push(todo);
+        fetch('http://localhost:3000/todos', {
+          method: 'POST',
+          headers: {
+            'Content-type': 'application/json; charset=UTF-8'
+          },
+          body: JSON.stringify({
+            title,
+            completed: false
+          })
+        })
+        .then(res => {
+          if (res.status === 201) {
+            this.fetchTodos()
+          }
+        })
       },
       sortTodos(val){
         switch(val) {
