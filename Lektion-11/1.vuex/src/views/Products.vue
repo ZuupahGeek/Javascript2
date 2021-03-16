@@ -8,7 +8,7 @@
       <br>
       <form>
         <div>
-          <input type="text" placeholder="Search...">
+          <input type="text" placeholder="Search..." v-model="searchValue" @keyup="search(searchValue)">
         </div>
       </form>
       <br>
@@ -35,14 +35,14 @@ export default {
   },
   data() {
     return {
-     
+      searchValue: '',
     }
   },
   computed: {
     ...mapGetters(['comp'])
   },
   methods: {
-    ...mapActions(['changeComp'])
+    ...mapActions(['changeComp', 'search'])
   }
 }
 </script>
