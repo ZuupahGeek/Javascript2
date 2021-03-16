@@ -1,5 +1,4 @@
 import Vue from 'vue'
-import { set } from 'vue/types/umd'
 import Vuex from 'vuex'
 
 Vue.use(Vuex)
@@ -56,11 +55,7 @@ export default new Vuex.Store({
     }
   },
   actions: {
-  //   subAsync: (context) => {
-  //    setTimeout(() => {
-  //      context.commit('SUB', amount)
-  //    }, 3000)
-  // },
+ 
     subAsync: ({ commit }, amount) => {
      setTimeout(() => {
        commit('SUB', amount)
@@ -70,7 +65,8 @@ export default new Vuex.Store({
     commit('ADD', amount)
   },
   changeComp: ({commit}, component) => {
-    commit('CHANGE_COMP', compoent)
+    commit('CHANGE_COMP', component)
   }
+}
 
 })

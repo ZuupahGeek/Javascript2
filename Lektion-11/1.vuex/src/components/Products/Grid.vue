@@ -3,14 +3,14 @@
     <button @click="addToPrice(5)" class="btn">ADD</button>
     <button @click="subAsync(5)" class="btn">SUB</button>
     <div class="grid">
-      <product-card v-for="product in products" :key="product.id" class="card" :product="product" />
+      <product-card v-for="product in taxedProducts" :key="product.id" class="card" :product="product" />
     </div>
   </div>
 </template>
 
 
 <script>
-import {mapActions} from 'vuex'
+import {mapActions, mapGetters} from 'vuex'
 import ProductCard from './ProductCard'
 
 
@@ -29,6 +29,7 @@ export default {
        products() {
         return this.$store.state.products
       },
+      ...mapGetters(['taxedProducts'])
     }
 }
 

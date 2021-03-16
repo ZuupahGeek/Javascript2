@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="/products/productDetail" class="card">
+  <div class="card">
     <h1>Name</h1>
     <p>id: {{ id }}</p>
     <h3>PRICE: 000</h3>
@@ -11,7 +11,7 @@
 
 <script>
 export default {
-
+  props: ['id']
 }
 </script>
 
