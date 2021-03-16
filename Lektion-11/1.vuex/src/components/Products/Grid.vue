@@ -1,0 +1,48 @@
+<template>
+  <div>
+    <button @click="addToPrice(5)" class="btn">ADD</button>
+    <button @click="subAsync(5)" class="btn">SUB</button>
+    <div class="grid">
+      <product-card v-for="product in products" :key="product.id" class="card" :product="product" />
+    </div>
+  </div>
+</template>
+
+
+<script>
+import {mapActions} from 'vuex'
+import ProductCard from './ProductCard'
+
+
+export default {
+  components: {
+    ProductCard
+  },
+  data() {
+    return {
+    }
+  },
+  methods: {
+    ...mapActions(['subAsync', 'addToPrice'])
+  },
+    computed: {
+       products() {
+        return this.$store.state.products
+      },
+    }
+}
+
+</script>
+
+<style>
+.grid {
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+}
+.card {
+  background: #005c50;
+  color: #fff;
+}
+</style>
