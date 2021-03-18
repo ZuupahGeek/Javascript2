@@ -74,7 +74,7 @@ exports.loginUser = (req, res) => {
         message: 'Incorrect email or password'
       })
     }
-
+    
     bcrypt.compare(req.body.password, user.passwordHash, (err, result) => {
       if(err) {
         return res.status(400).json(err)
@@ -94,12 +94,9 @@ exports.loginUser = (req, res) => {
             status: false,
             message: 'Incorrect email or password!'
         })
-
       }
+      
     })
-
-
-
 
   })
 }
